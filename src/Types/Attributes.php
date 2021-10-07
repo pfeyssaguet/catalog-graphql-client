@@ -2,6 +2,8 @@
 
 namespace ArrowSphere\CatalogGraphQLClient\Types;
 
+use ArrowSphere\Entities\Property;
+
 /**
  * Class Attributes
  *
@@ -18,19 +20,19 @@ namespace ArrowSphere\CatalogGraphQLClient\Types;
  * @method bool getSuspendSubscription()
  * @method int getTerm()
  * @method string getUnitType()
- * @method Attributes setCanSwitchAutoRenew(bool $canSwitchAutoRenew)
- * @method Attributes setCancelSubscription(bool $cancelSubscription)
- * @method Attributes setDecreaseSeats(bool $decreaseSeat)
- * @method Attributes setIncreaseSeats(bool $increaseSeat)
- * @method Attributes setPartIdentifier(string $partIdentifier)
- * @method Attributes setPeriodicity(int $periodicity)
- * @method Attributes setPlanId(string $planId)
- * @method Attributes setProductId(string $productID)
- * @method Attributes setProductSku(string $productSku)
- * @method Attributes setReactivateSubscription(bool $reactivateSubscription)
- * @method Attributes setSuspendSubscription(bool $suspendSubscription)
- * @method Attributes setTerm(int $setTerm)
- * @method Attributes setUnitType(string $unitType)
+ * @method self setCanSwitchAutoRenew(bool $canSwitchAutoRenew)
+ * @method self setCancelSubscription(bool $cancelSubscription)
+ * @method self setDecreaseSeats(bool $decreaseSeat)
+ * @method self setIncreaseSeats(bool $increaseSeat)
+ * @method self setPartIdentifier(string $partIdentifier)
+ * @method self setPeriodicity(int $periodicity)
+ * @method self setPlanId(string $planId)
+ * @method self setProductId(string $productID)
+ * @method self setProductSku(string $productSku)
+ * @method self setReactivateSubscription(bool $reactivateSubscription)
+ * @method self setSuspendSubscription(bool $suspendSubscription)
+ * @method self setTerm(int $setTerm)
+ * @method self setUnitType(string $unitType)
  */
 class Attributes extends AbstractType
 {
@@ -60,19 +62,81 @@ class Attributes extends AbstractType
 
     public const UNIT_TYPE = 'unitType';
 
-    protected const MAPPING = [
-        self::CAN_SWITCH_AUTO_RENEW   => self::TYPE_BOOL,
-        self::CANCEL_SUBSCRIPTION     => self::TYPE_BOOL,
-        self::DECREASE_SEATS          => self::TYPE_BOOL,
-        self::INCREASE_SEATS          => self::TYPE_BOOL,
-        self::PART_IDENTIFIER         => self::TYPE_STRING,
-        self::PERIODICITY             => self::TYPE_INT,
-        self::PLAN_ID                 => self::TYPE_STRING,
-        self::PRODUCT_ID              => self::TYPE_STRING,
-        self::PRODUCT_SKU             => self::TYPE_STRING,
-        self::REACTIVATE_SUBSCRIPTION => self::TYPE_BOOL,
-        self::SUSPEND_SUBSCRIPTION    => self::TYPE_BOOL,
-        self::TERM                    => self::TYPE_INT,
-        self::UNIT_TYPE               => self::TYPE_STRING,
-    ];
+    /**
+     * @Property(type="bool")
+     * @var bool
+     */
+    protected $canSwitchAutoRenew;
+
+    /**
+     * @Property(type="bool")
+     * @var bool
+     */
+    protected $cancelSubscription;
+
+    /**
+     * @Property(type="bool")
+     * @var bool
+     */
+    protected $decreaseSeats;
+
+    /**
+     * @Property(type="bool")
+     * @var bool
+     */
+    protected $increaseSeats;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $partIdentifier;
+
+    /**
+     * @Property(type="int")
+     * @var int
+     */
+    protected $periodicity;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $planId;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $productId;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $productSku;
+
+    /**
+     * @Property(type="bool")
+     * @var bool
+     */
+    protected $reactivateSubscription;
+
+    /**
+     * @Property(type="bool")
+     * @var bool
+     */
+    protected $suspendSubscription;
+
+    /**
+     * @Property(type="int")
+     * @var int
+     */
+    protected $term;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $unitType;
 }

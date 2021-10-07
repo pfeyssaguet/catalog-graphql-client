@@ -2,13 +2,15 @@
 
 namespace ArrowSphere\CatalogGraphQLClient\Types;
 
+use ArrowSphere\Entities\Property;
+
 /**
  * Class Family
  *
  * @method string getId()
  * @method string getName()
- * @method Family setId(string $id)
- * @method Family setName(string $id)
+ * @method self setId(string $id)
+ * @method self setName(string $id)
  */
 class Family extends AbstractType
 {
@@ -16,8 +18,15 @@ class Family extends AbstractType
 
     public const NAME = 'name';
 
-    protected const MAPPING = [
-        self::ID   => self::TYPE_STRING,
-        self::NAME => self::TYPE_STRING,
-    ];
+    /**
+     * @Property
+     * @var string
+     */
+    protected $id;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $name;
 }

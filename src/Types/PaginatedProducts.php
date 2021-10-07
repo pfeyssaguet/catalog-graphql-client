@@ -2,6 +2,8 @@
 
 namespace ArrowSphere\CatalogGraphQLClient\Types;
 
+use ArrowSphere\Entities\Property;
+
 /**
  * Class PaginatedProducts
  *
@@ -9,10 +11,10 @@ namespace ArrowSphere\CatalogGraphQLClient\Types;
  * @method Pagination getPagination()
  * @method Product[] getProducts()
  * @method Product[] getTopOffers()
- * @method PaginatedProducts setFilters(Filters[] $filters)
- * @method PaginatedProducts setPagination(Pagination $pagination)
- * @method PaginatedProducts setProducts(Product[] $products)
- * @method PaginatedProducts setTopOffers(Product[] $topOffers)
+ * @method self setFilters(Filters[] $filters)
+ * @method self setPagination(Pagination $pagination)
+ * @method self setProducts(Product[] $products)
+ * @method self setTopOffers(Product[] $topOffers)
  */
 class PaginatedProducts extends AbstractType
 {
@@ -24,19 +26,27 @@ class PaginatedProducts extends AbstractType
 
     public const TOP_OFFERS = 'topOffers';
 
-    protected const MAPPING = [
-        self::FILTERS    => [
-            self::MAPPING_TYPE  => Filters::class,
-            self::MAPPING_ARRAY => true,
-        ],
-        self::PAGINATION => Pagination::class,
-        self::PRODUCTS   => [
-            self::MAPPING_TYPE  => Product::class,
-            self::MAPPING_ARRAY => true,
-        ],
-        self::TOP_OFFERS => [
-            self::MAPPING_TYPE  => Product::class,
-            self::MAPPING_ARRAY => true,
-        ],
-    ];
+    /**
+     * @Property(type="ArrowSphere\CatalogGraphQLClient\Types\Filters", isArray=true)
+     * @var Filters[]
+     */
+    protected $filters;
+
+    /**
+     * @Property(type="ArrowSphere\CatalogGraphQLClient\Types\Pagination")
+     * @var Pagination
+     */
+    protected $pagination;
+
+    /**
+     * @Property(type="ArrowSphere\CatalogGraphQLClient\Types\Product", isArray=true)
+     * @var Product[]
+     */
+    protected $products;
+
+    /**
+     * @Property(type="ArrowSphere\CatalogGraphQLClient\Types\Product", isArray=true)
+     * @var Product[]
+     */
+    protected $topOffers;
 }

@@ -3,6 +3,7 @@
 namespace ArrowSphere\CatalogGraphQLClient\Tests\Types;
 
 use ArrowSphere\CatalogGraphQLClient\Types\PriceBandAttribute;
+use ArrowSphere\Entities\Exception\EntitiesException;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -10,6 +11,9 @@ use PHPUnit\Framework\TestCase;
  */
 class PriceBandAttributeTest extends TestCase
 {
+    /**
+     * @throws EntitiesException
+     */
     public function testFields(): void
     {
         $priceBandAttribute = new PriceBandAttribute([
@@ -22,8 +26,7 @@ class PriceBandAttributeTest extends TestCase
 
         $priceBandAttribute
             ->setName('cpu')
-            ->setValue('8')
-        ;
+            ->setValue('8');
 
         self::assertSame('cpu', $priceBandAttribute->getName());
         self::assertSame('8', $priceBandAttribute->getValue());

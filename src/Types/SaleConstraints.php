@@ -2,6 +2,8 @@
 
 namespace ArrowSphere\CatalogGraphQLClient\Types;
 
+use ArrowSphere\Entities\Property;
+
 /**
  * Class SaleConstraints
  *
@@ -13,14 +15,14 @@ namespace ArrowSphere\CatalogGraphQLClient\Types;
  * @method int getMaxSubscriptionPerCustomer()
  * @method string getSaleGroup()
  * @method string[] getRequiredAttributes()
- * @method SaleConstraints setCustomerQualifications(string[] $customerQualifications)
- * @method SaleConstraints setResellerQualifications(string[] $resellerQualifications)
- * @method SaleConstraints setMaxQuantity(int $maxQuantity)
- * @method SaleConstraints setMinQuantity(int $minQuantity)
- * @method SaleConstraints setMaxSubscriptionConstraint(string $maxSubscriptionConstraint)
- * @method SaleConstraints setMaxSubscriptionPerCustomer(int $maxSubscriptionPerCustomer)
- * @method SaleConstraints setSaleGroup(string $saleGroup)
- * @method SaleConstraints setRequiredAttributes(string[] $requiredAttributes)
+ * @method self setCustomerQualifications(string[] $customerQualifications)
+ * @method self setResellerQualifications(string[] $resellerQualifications)
+ * @method self setMaxQuantity(int $maxQuantity)
+ * @method self setMinQuantity(int $minQuantity)
+ * @method self setMaxSubscriptionConstraint(string $maxSubscriptionConstraint)
+ * @method self setMaxSubscriptionPerCustomer(int $maxSubscriptionPerCustomer)
+ * @method self setSaleGroup(string $saleGroup)
+ * @method self setRequiredAttributes(string[] $requiredAttributes)
  */
 class SaleConstraints extends AbstractType
 {
@@ -40,23 +42,51 @@ class SaleConstraints extends AbstractType
 
     public const REQUIRED_ATTRIBUTES = 'requiredAttributes';
 
-    protected const MAPPING = [
-        self::CUSTOMER_QUALIFICATIONS       => [
-            self::MAPPING_TYPE  => self::TYPE_STRING,
-            self::MAPPING_ARRAY => true,
-        ],
-        self::RESELLER_QUALIFICATIONS       => [
-            self::MAPPING_TYPE  => self::TYPE_STRING,
-            self::MAPPING_ARRAY => true,
-        ],
-        self::MAX_QUANTITY                  => self::TYPE_INT,
-        self::MIN_QUANTITY                  => self::TYPE_INT,
-        self::MAX_SUBSCRIPTION_CONSTRAINT   => self::TYPE_STRING,
-        self::MAX_SUBSCRIPTION_PER_CUSTOMER => self::TYPE_INT,
-        self::SALE_GROUP                    => self::TYPE_STRING,
-        self::REQUIRED_ATTRIBUTES           => [
-            self::MAPPING_TYPE  => self::TYPE_STRING,
-            self::MAPPING_ARRAY => true,
-        ]
-    ];
+    /**
+     * @Property(isArray=true)
+     * @var string
+     */
+    protected $customerQualifications;
+
+    /**
+     * @Property(isArray=true)
+     * @var string
+     */
+    protected $resellerQualifications;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $maxQuantity;
+
+    /**
+     * @Property(type="int")
+     * @var int
+     */
+    protected $minQuantity;
+
+    /**
+     * @Property(type="int")
+     * @var int
+     */
+    protected $maxSubscriptionConstraint;
+
+    /**
+     * @Property(type="int")
+     * @var int
+     */
+    protected $maxSubscriptionPerCustomer;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $saleGroup;
+
+    /**
+     * @Property(isArray=true)
+     * @var string[]
+     */
+    protected $requiredAttributes;
 }

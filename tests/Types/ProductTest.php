@@ -13,6 +13,7 @@ use ArrowSphere\CatalogGraphQLClient\Types\Program;
 use ArrowSphere\CatalogGraphQLClient\Types\RelatedOffer;
 use ArrowSphere\CatalogGraphQLClient\Types\SaleConstraints;
 use ArrowSphere\CatalogGraphQLClient\Types\Vendor;
+use ArrowSphere\Entities\Exception\EntitiesException;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -20,6 +21,9 @@ use PHPUnit\Framework\TestCase;
  */
 class ProductTest extends TestCase
 {
+    /**
+     * @throws EntitiesException
+     */
     public function testFields(): void
     {
         $product = new Product([

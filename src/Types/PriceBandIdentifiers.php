@@ -2,15 +2,17 @@
 
 namespace ArrowSphere\CatalogGraphQLClient\Types;
 
+use ArrowSphere\Entities\Property;
+
 /**
  * Class PriceBandIdentifiers
  *
  * @method PriceBandArrowsphereIdentifier getArrowsphere()
  * @method ErpIdentifier getErp()
  * @method VendorIdentifier getVendor()
- * @method PriceBandIdentifiers setArrowsphere(PriceBandArrowsphereIdentifier $arrowsphere)
- * @method PriceBandIdentifiers setErp(ErpIdentifier $erp)
- * @method PriceBandIdentifiers setVendor(VendorIdentifier $vendor)
+ * @method self setArrowsphere(PriceBandArrowsphereIdentifier $arrowsphere)
+ * @method self setErp(ErpIdentifier $erp)
+ * @method self setVendor(VendorIdentifier $vendor)
  */
 class PriceBandIdentifiers extends AbstractType
 {
@@ -20,9 +22,21 @@ class PriceBandIdentifiers extends AbstractType
 
     public const VENDOR = 'vendor';
 
-    protected const MAPPING = [
-        self::ARROWSPHERE => PriceBandArrowsphereIdentifier::class,
-        self::ERP         => ErpIdentifier::class,
-        self::VENDOR      => VendorIdentifier::class,
-    ];
+    /**
+     * @Property(type="ArrowSphere\CatalogGraphQLClient\Types\PriceBandArrowsphereIdentifier")
+     * @var PriceBandArrowsphereIdentifier
+     */
+    protected $arrowsphere;
+
+    /**
+     * @Property(type="ArrowSphere\CatalogGraphQLClient\Types\ErpIdentifier")
+     * @var ErpIdentifier
+     */
+    protected $erp;
+
+    /**
+     * @Property(type="ArrowSphere\CatalogGraphQLClient\Types\VendorIdentifier")
+     * @var VendorIdentifier
+     */
+    protected $vendor;
 }

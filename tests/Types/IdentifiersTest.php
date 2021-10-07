@@ -5,6 +5,7 @@ namespace ArrowSphere\CatalogGraphQLClient\Tests\Types;
 use ArrowSphere\CatalogGraphQLClient\Types\ArrowsphereIdentifier;
 use ArrowSphere\CatalogGraphQLClient\Types\Identifiers;
 use ArrowSphere\CatalogGraphQLClient\Types\VendorIdentifier;
+use ArrowSphere\Entities\Exception\EntitiesException;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -12,6 +13,9 @@ use PHPUnit\Framework\TestCase;
  */
 class IdentifiersTest extends TestCase
 {
+    /**
+     * @throws EntitiesException
+     */
     public function testFields(): void
     {
         $identifiers = new Identifiers([

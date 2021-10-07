@@ -2,6 +2,8 @@
 
 namespace ArrowSphere\CatalogGraphQLClient\Types;
 
+use ArrowSphere\Entities\Property;
+
 /**
  * Class ArrowsphereIdentifier
  *
@@ -9,10 +11,10 @@ namespace ArrowSphere\CatalogGraphQLClient\Types;
  * @method string getSkuXac()
  * @method string getSkuXsp()
  * @method string getOrderableSku()
- * @method ArrowsphereIdentifier setSku(string $sku)
- * @method ArrowsphereIdentifier setSkuXac(string $skuXac)
- * @method ArrowsphereIdentifier setSkuXsp(string $skuXsp)
- * @method ArrowsphereIdentifier setOrderableSku(string $orderableSku)
+ * @method self setSku(string $sku)
+ * @method self setSkuXac(string $skuXac)
+ * @method self setSkuXsp(string $skuXsp)
+ * @method self setOrderableSku(string $orderableSku)
  */
 class ArrowsphereIdentifier extends AbstractType
 {
@@ -24,10 +26,27 @@ class ArrowsphereIdentifier extends AbstractType
 
     public const ORDERABLE_SKU = 'orderableSku';
 
-    protected const MAPPING = [
-        self::SKU           => self::TYPE_STRING,
-        self::SKU_XAC       => self::TYPE_STRING,
-        self::SKU_XSP       => self::TYPE_STRING,
-        self::ORDERABLE_SKU => self::TYPE_STRING,
-    ];
+    /**
+     * @Property
+     * @var string
+     */
+    protected $sku;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $skuXac;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $skuXsp;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $orderableSku;
 }

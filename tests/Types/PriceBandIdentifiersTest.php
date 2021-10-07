@@ -6,6 +6,7 @@ use ArrowSphere\CatalogGraphQLClient\Types\ErpIdentifier;
 use ArrowSphere\CatalogGraphQLClient\Types\PriceBandArrowsphereIdentifier;
 use ArrowSphere\CatalogGraphQLClient\Types\PriceBandIdentifiers;
 use ArrowSphere\CatalogGraphQLClient\Types\VendorIdentifier;
+use ArrowSphere\Entities\Exception\EntitiesException;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -13,6 +14,9 @@ use PHPUnit\Framework\TestCase;
  */
 class PriceBandIdentifiersTest extends TestCase
 {
+    /**
+     * @throws EntitiesException
+     */
     public function testFields(): void
     {
         $priceBandIdentifiers = new PriceBandIdentifiers([

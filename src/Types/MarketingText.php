@@ -2,6 +2,8 @@
 
 namespace ArrowSphere\CatalogGraphQLClient\Types;
 
+use ArrowSphere\Entities\Property;
+
 /**
  * Class MarketingText
  *
@@ -9,10 +11,10 @@ namespace ArrowSphere\CatalogGraphQLClient\Types;
  * @method string getFeaturesShort()
  * @method string getFeaturesFull()
  * @method string getFeatures()
- * @method MarketingText setOverviewDescription(string $overviewDescription)
- * @method MarketingText setFeaturesShort(string $featuresShort)
- * @method MarketingText setFeaturesFull(string $featuresFull)
- * @method MarketingText setFeatures(string $features)
+ * @method self setOverviewDescription(string $overviewDescription)
+ * @method self setFeaturesShort(string $featuresShort)
+ * @method self setFeaturesFull(string $featuresFull)
+ * @method self setFeatures(string $features)
  */
 class MarketingText extends AbstractType
 {
@@ -24,10 +26,27 @@ class MarketingText extends AbstractType
 
     public const FEATURES = 'features';
 
-    protected const MAPPING = [
-        self::OVERVIEW_DESCRIPTION => self::TYPE_STRING,
-        self::FEATURES_SHORT       => self::TYPE_STRING,
-        self::FEATURES_FULL        => self::TYPE_STRING,
-        self::FEATURES             => self::TYPE_STRING,
-    ];
+    /**
+     * @Property
+     * @var string
+     */
+    protected $overviewDescription;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $featuresShort;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $featuresFull;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $features;
 }

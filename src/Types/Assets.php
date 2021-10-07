@@ -2,17 +2,19 @@
 
 namespace ArrowSphere\CatalogGraphQLClient\Types;
 
+use ArrowSphere\Entities\Property;
+
 /**
  * Class Assets
  *
- * @method string getFeaturePictureUrl()
- * @method string getMainLogoUrl()
- * @method string getPictureUrl()
- * @method string getSquareLogoUrl()
- * @method Assets setFeaturePictureUrl(string $featurePictureUrl)
- * @method Assets setMainLogoUrl(string $mainLogoUrl)
- * @method Assets setPictureUrl(string $pictureUrl)
- * @method Assets setSquareLogoUrl(string $squareLogoUrl)
+ * @method string|null getFeaturePictureUrl()
+ * @method string|null getMainLogoUrl()
+ * @method string|null getPictureUrl()
+ * @method string|null getSquareLogoUrl()
+ * @method self setFeaturePictureUrl(string|null $featurePictureUrl)
+ * @method self setMainLogoUrl(string|null $mainLogoUrl)
+ * @method self setPictureUrl(string|null $pictureUrl)
+ * @method self setSquareLogoUrl(string|null $squareLogoUrl)
  */
 class Assets extends AbstractType
 {
@@ -24,10 +26,27 @@ class Assets extends AbstractType
 
     public const SQUARE_LOGO_URL = 'squareLogoUrl';
 
-    protected const MAPPING = [
-        self::FEATURE_PICTURE_URL => self::TYPE_STRING,
-        self::MAIN_LOGO_URL       => self::TYPE_STRING,
-        self::PICTURE_URL         => self::TYPE_STRING,
-        self::SQUARE_LOGO_URL     => self::TYPE_STRING,
-    ];
+    /**
+     * @Property(nullable=true)
+     * @var string|null
+     */
+    protected $featurePictureUrl;
+
+    /**
+     * @Property(nullable=true)
+     * @var string|null
+     */
+    protected $mainLogoUrl;
+
+    /**
+     * @Property(nullable=true)
+     * @var string|null
+     */
+    protected $pictureUrl;
+
+    /**
+     * @Property(nullable=true)
+     * @var string|null
+     */
+    protected $squareLogoUrl;
 }

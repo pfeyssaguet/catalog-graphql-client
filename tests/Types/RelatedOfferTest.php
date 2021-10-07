@@ -3,6 +3,7 @@
 namespace ArrowSphere\CatalogGraphQLClient\Tests\Types;
 
 use ArrowSphere\CatalogGraphQLClient\Types\RelatedOffer;
+use ArrowSphere\Entities\Exception\EntitiesException;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -10,6 +11,9 @@ use PHPUnit\Framework\TestCase;
  */
 class RelatedOfferTest extends TestCase
 {
+    /**
+     * @throws EntitiesException
+     */
     public function testFields(): void
     {
         $relatedOffer = new RelatedOffer([

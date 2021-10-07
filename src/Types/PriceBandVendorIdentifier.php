@@ -2,13 +2,15 @@
 
 namespace ArrowSphere\CatalogGraphQLClient\Types;
 
+use ArrowSphere\Entities\Property;
+
 /**
  * Class PriceBandVendorIdentifier
  *
  * @method string getPurchasePlan()
  * @method string getSku()
- * @method PriceBandVendorIdentifier setPurchasePlan(string $purchasePlan)
- * @method PriceBandVendorIdentifier setSku(string $sku)
+ * @method self setPurchasePlan(string $purchasePlan)
+ * @method self setSku(string $sku)
  */
 class PriceBandVendorIdentifier extends AbstractType
 {
@@ -16,8 +18,15 @@ class PriceBandVendorIdentifier extends AbstractType
 
     public const SKU = 'sku';
 
-    protected const MAPPING = [
-        self::PURCHASE_PLAN => self::TYPE_STRING,
-        self::SKU           => self::TYPE_STRING,
-    ];
+    /**
+     * @Property
+     * @var string
+     */
+    protected $purchasePlan;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $sku;
 }

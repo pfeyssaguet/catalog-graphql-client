@@ -2,6 +2,8 @@
 
 namespace ArrowSphere\CatalogGraphQLClient\Types;
 
+use ArrowSphere\Entities\Property;
+
 /**
  * Class PriceBand
  *
@@ -17,20 +19,18 @@ namespace ArrowSphere\CatalogGraphQLClient\Types;
  * @method Uom getUom()
  * @method DynamicAttributes getDynamicAttributes()
  * @method string getName()
- * @method PriceBandAttribute[] getAttributes()
- * @method PriceBand setIsEnabled(bool $isEnabled)
- * @method PriceBand setActionFlags(PriceBandActionFlags $actionFlags)
- * @method PriceBand setBilling(Billing $billing)
- * @method PriceBand setCurrency(string $currency)
- * @method PriceBand setIdentifiers(PriceBandIdentifiers $identifiers)
- * @method PriceBand setMarketplace(string $marketplace)
- * @method PriceBand setPrices(Prices $prices)
- * @method PriceBand setSaleConstraints(PriceBandSaleConstraints $saleConstraints)
- * @method PriceBand setOrderingType(string $orderingType)
- * @method PriceBand setUom(Uom $uom)
- * @method PriceBand setDynamicAttributes(DynamicAttributes $dynamicAttributes)
- * @method PriceBand setName(string $name)
- * @method PriceBand setAttributes(PriceBandAttribute[] $attributes)
+ * @method self setIsEnabled(bool $isEnabled)
+ * @method self setActionFlags(PriceBandActionFlags $actionFlags)
+ * @method self setBilling(Billing $billing)
+ * @method self setCurrency(string $currency)
+ * @method self setIdentifiers(PriceBandIdentifiers $identifiers)
+ * @method self setMarketplace(string $marketplace)
+ * @method self setPrices(Prices $prices)
+ * @method self setSaleConstraints(PriceBandSaleConstraints $saleConstraints)
+ * @method self setOrderingType(string $orderingType)
+ * @method self setUom(Uom $uom)
+ * @method self setDynamicAttributes(DynamicAttributes $dynamicAttributes)
+ * @method self setName(string $name)
  */
 class PriceBand extends AbstractType
 {
@@ -60,22 +60,81 @@ class PriceBand extends AbstractType
 
     public const ATTRIBUTES = 'attributes';
 
-    protected const MAPPING = [
-        self::NAME               => self::TYPE_STRING,
-        self::IS_ENABLED         => self::TYPE_BOOL,
-        self::ACTION_FLAGS       => PriceBandActionFlags::class,
-        self::BILLING            => Billing::class,
-        self::CURRENCY           => self::TYPE_STRING,
-        self::IDENTIFIERS        => PriceBandIdentifiers::class,
-        self::MARKETPLACE        => self::TYPE_STRING,
-        self::PRICES             => Prices::class,
-        self::DYNAMIC_ATTRIBUTES => DynamicAttributes::class,
-        self::SALE_CONSTRAINTS   => PriceBandSaleConstraints::class,
-        self::ORDERING_TYPE      => self::TYPE_STRING,
-        self::UOM                => Uom::class,
-        self::ATTRIBUTES   => [
-            self::MAPPING_TYPE  => PriceBandAttribute::class,
-            self::MAPPING_ARRAY => true,
-        ],
-    ];
+    /**
+     * @Property(type="bool")
+     * @var bool
+     */
+    protected $isEnabled;
+
+    /**
+     * @Property(type="ArrowSphere\CatalogGraphQLClient\Types\PriceBandActionFlags")
+     * @var PriceBandActionFlags
+     */
+    protected $actionFlags;
+
+    /**
+     * @Property(type="ArrowSphere\CatalogGraphQLClient\Types\Billing")
+     * @var Billing
+     */
+    protected $billing;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $currency;
+
+    /**
+     * @Property(type="ArrowSphere\CatalogGraphQLClient\Types\PriceBandIdentifiers")
+     * @var PriceBandIdentifiers
+     */
+    protected $identifiers;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $marketplace;
+
+    /**
+     * @Property(type="ArrowSphere\CatalogGraphQLClient\Types\Prices")
+     * @var Prices
+     */
+    protected $prices;
+
+    /**
+     * @Property(type="ArrowSphere\CatalogGraphQLClient\Types\PriceBandSaleConstraints")
+     * @var PriceBandSaleConstraints
+     */
+    protected $saleConstraints;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $orderingType;
+
+    /**
+     * @Property(type="ArrowSphere\CatalogGraphQLClient\Types\Uom")
+     * @var Uom
+     */
+    protected $uom;
+
+    /**
+     * @Property(type="ArrowSphere\CatalogGraphQLClient\Types\DynamicAttributes", nullable=true)
+     * @var DynamicAttributes|null
+     */
+    protected $dynamicAttributes;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $name;
+
+    /**
+     * @Property(type="ArrowSphere\CatalogGraphQLClient\Types\PriceBandAttribute", isArray=true)
+     * @var PriceBandAttribute[]
+     */
+    protected $attributes;
 }

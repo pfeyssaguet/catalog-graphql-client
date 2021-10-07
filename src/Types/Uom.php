@@ -2,13 +2,15 @@
 
 namespace ArrowSphere\CatalogGraphQLClient\Types;
 
+use ArrowSphere\Entities\Property;
+
 /**
  * Class Uom
  *
  * @method int getQuantity()
  * @method string getType()
- * @method Uom setQuantity(int $quantity)
- * @method Uom setType(string $type)
+ * @method self setQuantity(int $quantity)
+ * @method self setType(string $type)
  */
 class Uom extends AbstractType
 {
@@ -16,8 +18,15 @@ class Uom extends AbstractType
 
     public const TYPE = 'type';
 
-    protected const MAPPING = [
-        self::QUANTITY => self::TYPE_INT,
-        self::TYPE     => self::TYPE_STRING,
-    ];
+    /**
+     * @Property(type="int")
+     * @var int
+     */
+    protected $quantity;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $type;
 }

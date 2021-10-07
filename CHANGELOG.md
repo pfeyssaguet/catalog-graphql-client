@@ -5,6 +5,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- This package now relies on [arrowsphere/entities](https://github.com/ArrowSphere/entities) which provides a way to simplify entities with annotations
+
 ## [0.6.8] - 2021-10-07
 
 ### Added

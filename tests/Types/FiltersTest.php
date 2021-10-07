@@ -4,6 +4,7 @@ namespace ArrowSphere\CatalogGraphQLClient\Tests\Types;
 
 use ArrowSphere\CatalogGraphQLClient\Types\Filters;
 use ArrowSphere\CatalogGraphQLClient\Types\FiltersValues;
+use ArrowSphere\Entities\Exception\EntitiesException;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -11,6 +12,9 @@ use PHPUnit\Framework\TestCase;
  */
 class FiltersTest extends TestCase
 {
+    /**
+     * @throws EntitiesException
+     */
     public function testFields(): void
     {
         $filters = new Filters([

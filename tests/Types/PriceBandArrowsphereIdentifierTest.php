@@ -3,6 +3,7 @@
 namespace ArrowSphere\CatalogGraphQLClient\Tests\Types;
 
 use ArrowSphere\CatalogGraphQLClient\Types\PriceBandArrowsphereIdentifier;
+use ArrowSphere\Entities\Exception\EntitiesException;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -10,6 +11,9 @@ use PHPUnit\Framework\TestCase;
  */
 class PriceBandArrowsphereIdentifierTest extends TestCase
 {
+    /**
+     * @throws EntitiesException
+     */
     public function testFields(): void
     {
         $priceBandArrowsphereIdentifier = new PriceBandArrowsphereIdentifier([

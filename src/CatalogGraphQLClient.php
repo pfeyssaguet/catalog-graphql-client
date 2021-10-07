@@ -2,7 +2,6 @@
 
 namespace ArrowSphere\CatalogGraphQLClient;
 
-use ArrowSphere\CatalogGraphQLClient\Exceptions\NonExistingFieldException;
 use ArrowSphere\CatalogGraphQLClient\Helpers\FilterHelper;
 use ArrowSphere\CatalogGraphQLClient\Helpers\InputPreparator;
 use ArrowSphere\CatalogGraphQLClient\Input\Paginate;
@@ -66,8 +65,6 @@ class CatalogGraphQLClient
      * @param int $perPage
      *
      * @return PaginatedProducts
-     *
-     * @throws NonExistingFieldException
      */
     public function find(array $searchBody, array $fields, int $page = 1, $perPage = 100): PaginatedProducts
     {
@@ -104,8 +101,6 @@ class CatalogGraphQLClient
      * @param array $fields
      *
      * @return Product|null
-     *
-     * @throws NonExistingFieldException
      */
     public function findOne(array $searchBody, array $fields): ?Product
     {

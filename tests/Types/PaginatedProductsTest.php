@@ -6,6 +6,7 @@ use ArrowSphere\CatalogGraphQLClient\Types\Filters;
 use ArrowSphere\CatalogGraphQLClient\Types\PaginatedProducts;
 use ArrowSphere\CatalogGraphQLClient\Types\Pagination;
 use ArrowSphere\CatalogGraphQLClient\Types\Product;
+use ArrowSphere\Entities\Exception\EntitiesException;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -13,6 +14,9 @@ use PHPUnit\Framework\TestCase;
  */
 class PaginatedProductsTest extends TestCase
 {
+    /**
+     * @throws EntitiesException
+     */
     public function testFields(): void
     {
         $paginatedProducts = new PaginatedProducts([

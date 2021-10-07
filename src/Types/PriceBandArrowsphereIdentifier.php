@@ -2,17 +2,21 @@
 
 namespace ArrowSphere\CatalogGraphQLClient\Types;
 
+use ArrowSphere\Entities\Property;
+
 /**
  * Class PriceBandArrowsphereIdentifier
  *
  * @method string getSku()
- * @method PriceBandArrowsphereIdentifier setSku(string $sku)
+ * @method self setSku(string $sku)
  */
 class PriceBandArrowsphereIdentifier extends AbstractType
 {
     public const SKU = 'sku';
 
-    protected const MAPPING = [
-        self::SKU => self::TYPE_STRING,
-    ];
+    /**
+     * @Property
+     * @var string
+     */
+    protected $sku;
 }

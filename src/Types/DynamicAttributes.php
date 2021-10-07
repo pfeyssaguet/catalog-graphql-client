@@ -2,6 +2,8 @@
 
 namespace ArrowSphere\CatalogGraphQLClient\Types;
 
+use ArrowSphere\Entities\Property;
+
 /**
  * Class Billing
  *
@@ -14,15 +16,15 @@ namespace ArrowSphere\CatalogGraphQLClient\Types;
  * @method string getMarketSegment()
  * @method string getVersion()
  * @method string getMetric()
- * @method DynamicAttributes setDiskSize(string $diskSize)
- * @method DynamicAttributes setRam(string $ram)
- * @method DynamicAttributes setRegion(string $region)
- * @method DynamicAttributes setVCpu(string $vCpu)
- * @method DynamicAttributes setReservationsAutofitGroup(string $reservationsAutofitGroup)
- * @method DynamicAttributes setAcu(string $acu)
- * @method DynamicAttributes setMarketSegment(string $marketSegment)
- * @method DynamicAttributes setVersion(string $version)
- * @method DynamicAttributes setMetric(string $metric)
+ * @method self setDiskSize(string $diskSize)
+ * @method self setRam(string $ram)
+ * @method self setRegion(string $region)
+ * @method self setVCpu(string $vCpu)
+ * @method self setReservationsAutofitGroup(string $reservationsAutofitGroup)
+ * @method self setAcu(string $acu)
+ * @method self setMarketSegment(string $marketSegment)
+ * @method self setVersion(string $version)
+ * @method self setMetric(string $metric)
  */
 class DynamicAttributes extends AbstractType
 {
@@ -44,15 +46,57 @@ class DynamicAttributes extends AbstractType
 
     public const METRIC = 'metric';
 
-    protected const MAPPING = [
-        self::DISK_SIZE                  => self::TYPE_STRING,
-        self::RAM                        => self::TYPE_STRING,
-        self::REGION                     => self::TYPE_STRING,
-        self::VCPU                       => self::TYPE_STRING,
-        self::RESERVATIONS_AUTOFIT_GROUP => self::TYPE_STRING,
-        self::ACU                        => self::TYPE_STRING,
-        self::MARKET_SEGMENT             => self::TYPE_STRING,
-        self::VERSION                    => self::TYPE_STRING,
-        self::METRIC                     => self::TYPE_STRING,
-    ];
+    /**
+     * @Property
+     * @var string
+     */
+    protected $diskSize;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $ram;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $region;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $vCpu;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $reservationsAutofitGroup;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $acu;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $marketSegment;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $version;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $metric;
 }

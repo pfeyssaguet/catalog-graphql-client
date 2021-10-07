@@ -2,17 +2,21 @@
 
 namespace ArrowSphere\CatalogGraphQLClient\Types;
 
+use ArrowSphere\Entities\Property;
+
 /**
  * Class Vendor
  *
  * @method string getName()
- * @method Vendor setName(string $name)
+ * @method self setName(string $name)
  */
 class Vendor extends AbstractType
 {
     public const NAME = 'name';
 
-    protected const MAPPING = [
-        self::NAME => self::TYPE_STRING,
-    ];
+    /**
+     * @Property
+     * @var string
+     */
+    protected $name;
 }

@@ -2,13 +2,15 @@
 
 namespace ArrowSphere\CatalogGraphQLClient\Types;
 
+use ArrowSphere\Entities\Property;
+
 /**
  * Class RelatedOffer
  *
  * @method string getSku()
  * @method string getVendor()
- * @method RelatedOffer setSku(string $sku)
- * @method RelatedOffer setVendor(string $vendor)
+ * @method self setSku(string $sku)
+ * @method self setVendor(string $vendor)
  */
 class RelatedOffer extends AbstractType
 {
@@ -16,8 +18,15 @@ class RelatedOffer extends AbstractType
 
     public const VENDOR = 'vendor';
 
-    protected const MAPPING = [
-        self::SKU    => self::TYPE_STRING,
-        self::VENDOR => self::TYPE_STRING,
-    ];
+    /**
+     * @Property
+     * @var string
+     */
+    protected $sku;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $vendor;
 }

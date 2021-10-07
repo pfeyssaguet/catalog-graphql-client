@@ -2,9 +2,10 @@
 
 namespace ArrowSphere\CatalogGraphQLClient\Tests\Types;
 
-use ArrowSphere\CatalogGraphQLClient\Exceptions\NonExistingFieldException;
 use ArrowSphere\CatalogGraphQLClient\Exceptions\UnrequestedFieldException;
 use ArrowSphere\CatalogGraphQLClient\Types\AbstractType;
+use ArrowSphere\Entities\Exception\EntitiesException;
+use ArrowSphere\Entities\Property;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -13,7 +14,7 @@ use PHPUnit\Framework\TestCase;
 class AbstractTypeTest extends TestCase
 {
     /**
-     * @throws NonExistingFieldException
+     * @throws EntitiesException
      */
     private function initType(): MyType
     {
@@ -64,7 +65,7 @@ class AbstractTypeTest extends TestCase
     }
 
     /**
-     * @throws NonExistingFieldException
+     * @throws EntitiesException
      */
     public function testFields(): void
     {
@@ -119,7 +120,7 @@ class AbstractTypeTest extends TestCase
     }
 
     /**
-     * @throws NonExistingFieldException
+     * @throws EntitiesException
      */
     public function testSerialize(): void
     {
@@ -191,36 +192,77 @@ JSON;
  */
 class MyType extends AbstractType
 {
-    protected const MAPPING = [
-        'testBool'             => self::TYPE_BOOL,
-        'testString'           => self::TYPE_STRING,
-        'testInt'              => self::TYPE_INT,
-        'testFloat'            => self::TYPE_FLOAT,
-        'testOtherType'        => MyOtherType::class,
-        'testArrayOfBool'      => [
-            self::MAPPING_TYPE  => self::TYPE_BOOL,
-            self::MAPPING_ARRAY => true,
-        ],
-        'testArrayOfString'    => [
-            self::MAPPING_TYPE  => self::TYPE_STRING,
-            self::MAPPING_ARRAY => true,
-        ],
-        'testArrayOfInt'       => [
-            self::MAPPING_TYPE  => self::TYPE_INT,
-            self::MAPPING_ARRAY => true,
-        ],
-        'testArrayOfFloat'     => [
-            self::MAPPING_TYPE  => self::TYPE_FLOAT,
-            self::MAPPING_ARRAY => true,
-        ],
-        'testArrayOfOtherType' => [
-            self::MAPPING_TYPE  => MyOtherType::class,
-            self::MAPPING_ARRAY => true,
-        ],
-        'testNullableField'    => self::TYPE_STRING,
-        'testUnrequestedField' => self::TYPE_STRING,
+    /**
+     * @Property(type="bool")
+     * @var bool
+     */
+    protected $testBool;
 
-    ];
+    /**
+     * @Property
+     * @var string
+     */
+    protected $testString;
+
+    /**
+     * @Property(type="int")
+     * @var int
+     */
+    protected $testInt;
+
+    /**
+     * @Property(type="float")
+     * @var float
+     */
+    protected $testFloat;
+
+    /**
+     * @Property(type="ArrowSphere\CatalogGraphQLClient\Tests\Types\MyOtherType")
+     * @var MyOtherType
+     */
+    protected $testOtherType;
+
+    /**
+     * @Property(type="bool", isArray=true)
+     * @var bool[]
+     */
+    protected $testArrayOfBool;
+
+    /**
+     * @Property(isArray=true)
+     * @var string[]
+     */
+    protected $testArrayOfString;
+
+    /**
+     * @Property(type="int", isArray=true)
+     * @var int[]
+     */
+    protected $testArrayOfInt;
+
+    /**
+     * @Property(type="float", isArray=true)
+     * @var float[]
+     */
+    protected $testArrayOfFloat;
+
+    /**
+     * @Property(type="ArrowSphere\CatalogGraphQLClient\Tests\Types\MyOtherType", isArray=true)
+     * @var MyOtherType[]
+     */
+    protected $testArrayOfOtherType;
+
+    /**
+     * @Property(required=true, nullable=true)
+     * @var string|null
+     */
+    protected $testNullableField;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $testUnrequestedField;
 }
 
 /**
@@ -230,7 +272,9 @@ class MyType extends AbstractType
  */
 class MyOtherType extends AbstractType
 {
-    protected const MAPPING = [
-        'test' => self::TYPE_STRING,
-    ];
+    /**
+     * @Property
+     * @var string
+     */
+    protected $test;
 }

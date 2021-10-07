@@ -22,6 +22,7 @@
   "require": {
     "php": "^7.2",
     "ext-json": "*",
+    "arrowsphere/entities": "dev-handle-non-existing-fields",
     "gmostafa/php-graphql-client": "^1.8",
     "symfony/polyfill-php80": "^1.22",
     "symfony/polyfill-php81": "^1.22"
@@ -44,5 +45,15 @@
     "sort-packages": true
   },
   "minimum-stability": "dev",
-  "prefer-stable": true
+  "prefer-stable": true,
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/pfeyssaguet/entities.git"
+    },
+    {
+      "type": "composer",
+      "url": "https://packagist.org"
+    }
+  ]
 }

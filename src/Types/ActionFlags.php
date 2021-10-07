@@ -2,15 +2,17 @@
 
 namespace ArrowSphere\CatalogGraphQLClient\Types;
 
+use ArrowSphere\Entities\Property;
+
 /**
  * Class ActionFlags
  *
  * @method bool getIsAutoRenew()
  * @method bool getIsManualProvisioning()
  * @method bool getRenewalSku()
- * @method ActionFlags setIsAutoRenew(bool $isAutoRenew)
- * @method ActionFlags setIsManualProvisioning(bool $isManualProcessing)
- * @method ActionFlags setRenewalSku(bool $renewalSku)
+ * @method self setIsAutoRenew(bool $isAutoRenew)
+ * @method self setIsManualProvisioning(bool $isManualProcessing)
+ * @method self setRenewalSku(bool $renewalSku)
  */
 class ActionFlags extends AbstractType
 {
@@ -20,9 +22,21 @@ class ActionFlags extends AbstractType
 
     public const RENEWAL_SKU = 'renewalSku';
 
-    protected const MAPPING = [
-        self::IS_AUTO_RENEW          => self::TYPE_BOOL,
-        self::IS_MANUAL_PROVISIONING => self::TYPE_BOOL,
-        self::RENEWAL_SKU            => self::TYPE_BOOL,
-    ];
+    /**
+     * @Property(type="bool")
+     * @var bool
+     */
+    protected $isAutoRenew;
+
+    /**
+     * @Property(type="bool")
+     * @var bool
+     */
+    protected $isManualProvisioning;
+
+    /**
+     * @Property(type="bool")
+     * @var bool
+     */
+    protected $renewalSku;
 }

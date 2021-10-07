@@ -2,15 +2,17 @@
 
 namespace ArrowSphere\CatalogGraphQLClient\Types;
 
+use ArrowSphere\Entities\Property;
+
 /**
  * Class Billing
  *
  * @method int getCycle()
  * @method int getTerm()
  * @method string getType()
- * @method Billing setCycle(int $cycle)
- * @method Billing setTerm(int $term)
- * @method Billing setType(string $type)
+ * @method self setCycle(int $cycle)
+ * @method self setTerm(int $term)
+ * @method self setType(string $type)
  */
 class Billing extends AbstractType
 {
@@ -20,9 +22,21 @@ class Billing extends AbstractType
 
     public const TYPE = 'type';
 
-    protected const MAPPING = [
-        self::CYCLE => self::TYPE_INT,
-        self::TERM  => self::TYPE_INT,
-        self::TYPE  => self::TYPE_STRING,
-    ];
+    /**
+     * @Property(type="int")
+     * @var int
+     */
+    protected $cycle;
+
+    /**
+     * @Property(type="int")
+     * @var int
+     */
+    protected $term;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $type;
 }

@@ -2,6 +2,8 @@
 
 namespace ArrowSphere\CatalogGraphQLClient\Types;
 
+use ArrowSphere\Entities\Property;
+
 /**
  * Class Product
  *
@@ -42,43 +44,43 @@ namespace ArrowSphere\CatalogGraphQLClient\Types;
  * @method RelatedOffer[] getRelatedOffers()
  * @method string[] getArrowSubCategories()
  * @method bool getIsIndirectBusiness()
- * @method Product setId(string $id)
- * @method Product setIdentifiers(Identifiers $identifiers)
- * @method Product setName(string $name)
- * @method Product setClassification(string $classification)
- * @method Product setArrowCategories(string[] $arrowCategories)
- * @method Product setLicenseAgreementType(string $licenseAgreementType)
- * @method Product setFamily(Family $family)
- * @method Product setIsAddon(bool $isAddon)
- * @method Product setHasAddons(bool $hasAddons)
- * @method Product setActionFlags(ActionFlags $actionFlags)
- * @method Product setAddonPrimaries(Identifiers[] $addonPrimaries)
- * @method Product setConversionOfferPrimaries(Identifiers[] $conversionOfferPrimaries)
- * @method Product setBaseOfferPrimaries(Identifiers[] $baseOfferPrimaries)
- * @method Product setAssets(Assets $assets)
- * @method Product setEnvironmentAvailability(string $environmentAvailability)
- * @method Product setMarketplace(string $marketplace)
- * @method Product setIsEnabled(bool $isEnabled)
- * @method Product setIsTrial(bool $isTrial)
- * @method Product setLastUpdate(string $lastUpdate)
- * @method Product setMarketingText(MarketingText $marketingText)
- * @method Product setVendorOfferUrl(string $vendorOfferUrl)
- * @method Product setServiceDescription(string $serviceDescription)
- * @method Product setEula(string $eula)
- * @method Product setEndCustomerEula(string $endCustomerEula)
- * @method Product setEndCustomerRequirements(string $endCustomerRequirements)
- * @method Product setEndCustomerFeatures(string $endCustomerFeatures)
- * @method Product setXspUrl(string $xspUrl)
- * @method Product setSaleConstraints(SaleConstraints $saleConstraints)
- * @method Product setVendor(Vendor $vendor)
- * @method Product setProgram(Program $program)
- * @method Product setWeightTopSales(float $weightTopSales)
- * @method Product setWeightForced(float $weightForced)
- * @method Product setPriceBand(PriceBand[] $priceBand)
- * @method Product setDefaultPriceBand(PriceBand $defaultPriceBand)
- * @method Product setRelatedOffers(RelatedOffer[] $relatedOffers)
- * @method Product setArrowSubCategories(string[] $arrowSubCategories)
- * @method Product setIsIndirectBusiness(bool $isIndirectBusiness)
+ * @method self setId(string $id)
+ * @method self setIdentifiers(Identifiers $identifiers)
+ * @method self setName(string $name)
+ * @method self setClassification(string $classification)
+ * @method self setArrowCategories(string[] $arrowCategories)
+ * @method self setLicenseAgreementType(string $licenseAgreementType)
+ * @method self setFamily(Family $family)
+ * @method self setIsAddon(bool $isAddon)
+ * @method self setHasAddons(bool $hasAddons)
+ * @method self setActionFlags(ActionFlags $actionFlags)
+ * @method self setAddonPrimaries(Identifiers[] $addonPrimaries)
+ * @method self setConversionOfferPrimaries(Identifiers[] $conversionOfferPrimaries)
+ * @method self setBaseOfferPrimaries(Identifiers[] $baseOfferPrimaries)
+ * @method self setAssets(Assets $assets)
+ * @method self setEnvironmentAvailability(string $environmentAvailability)
+ * @method self setMarketplace(string $marketplace)
+ * @method self setIsEnabled(bool $isEnabled)
+ * @method self setIsTrial(bool $isTrial)
+ * @method self setLastUpdate(string $lastUpdate)
+ * @method self setMarketingText(MarketingText $marketingText)
+ * @method self setVendorOfferUrl(string $vendorOfferUrl)
+ * @method self setServiceDescription(string $serviceDescription)
+ * @method self setEula(string $eula)
+ * @method self setEndCustomerEula(string $endCustomerEula)
+ * @method self setEndCustomerRequirements(string $endCustomerRequirements)
+ * @method self setEndCustomerFeatures(string $endCustomerFeatures)
+ * @method self setXspUrl(string $xspUrl)
+ * @method self setSaleConstraints(SaleConstraints $saleConstraints)
+ * @method self setVendor(Vendor $vendor)
+ * @method self setProgram(Program $program)
+ * @method self setWeightTopSales(float $weightTopSales)
+ * @method self setWeightForced(float $weightForced)
+ * @method self setPriceBand(PriceBand[] $priceBand)
+ * @method self setDefaultPriceBand(PriceBand $defaultPriceBand)
+ * @method self setRelatedOffers(RelatedOffer[] $relatedOffers)
+ * @method self setArrowSubCategories(string[] $arrowSubCategories)
+ * @method self setIsIndirectBusiness(bool $isIndirectBusiness)
  */
 class Product extends AbstractType
 {
@@ -156,64 +158,225 @@ class Product extends AbstractType
 
     public const IS_INDIRECT_BUSINESS = 'isIndirectBusiness';
 
-    protected const MAPPING = [
-        self::ID                         => self::TYPE_STRING,
-        self::IDENTIFIERS                => Identifiers::class,
-        self::NAME                       => self::TYPE_STRING,
-        self::CLASSIFICATION             => self::TYPE_STRING,
-        self::ARROW_SUB_CATEGORIES => [
-            self::MAPPING_TYPE  => self::TYPE_STRING,
-            self::MAPPING_ARRAY => true,
-        ],
-        self::ARROW_CATEGORIES           => [
-            self::MAPPING_TYPE  => self::TYPE_STRING,
-            self::MAPPING_ARRAY => true,
-        ],
-        self::LICENSE_AGREEMENT_TYPE     => self::TYPE_STRING,
-        self::FAMILY                     => Family::class,
-        self::IS_ADDON                   => self::TYPE_BOOL,
-        self::HAS_ADDONS                 => self::TYPE_BOOL,
-        self::ACTION_FLAGS               => ActionFlags::class,
-        self::ADDON_PRIMARIES            => [
-            self::MAPPING_TYPE  => Identifiers::class,
-            self::MAPPING_ARRAY => true,
-        ],
-        self::CONVERSION_OFFER_PRIMARIES => [
-            self::MAPPING_TYPE  => Identifiers::class,
-            self::MAPPING_ARRAY => true,
-        ],
-        self::BASE_OFFER_PRIMARIES       => [
-            self::MAPPING_TYPE  => Identifiers::class,
-            self::MAPPING_ARRAY => true,
-        ],
-        self::ASSETS                     => Assets::class,
-        self::ENVIRONMENT_AVAILABILITY   => self::TYPE_STRING,
-        self::MARKETPLACE                => self::TYPE_STRING,
-        self::IS_ENABLED                 => self::TYPE_BOOL,
-        self::IS_TRIAL                   => self::TYPE_BOOL,
-        self::LAST_UPDATE                => self::TYPE_STRING,
-        self::MARKETING_TEXT             => MarketingText::class,
-        self::VENDOR_OFFER_URL           => self::TYPE_STRING,
-        self::SERVICE_DESCRIPTION        => self::TYPE_STRING,
-        self::EULA                       => self::TYPE_STRING,
-        self::END_CUSTOMER_EULA          => self::TYPE_STRING,
-        self::END_CUSTOMER_REQUIREMENTS  => self::TYPE_STRING,
-        self::END_CUSTOMER_FEATURES      => self::TYPE_STRING,
-        self::XSP_URL                    => self::TYPE_STRING,
-        self::SALE_CONSTRAINTS           => SaleConstraints::class,
-        self::VENDOR                     => Vendor::class,
-        self::PROGRAM                    => Program::class,
-        self::WEIGHT_TOP_SALES           => self::TYPE_FLOAT,
-        self::WEIGHT_FORCED              => self::TYPE_FLOAT,
-        self::DEFAULT_PRICE_BAND         => PriceBand::class,
-        self::PRICE_BAND                 => [
-            self::MAPPING_TYPE  => PriceBand::class,
-            self::MAPPING_ARRAY => true,
-        ],
-        self::RELATED_OFFERS             => [
-            self::MAPPING_TYPE  => RelatedOffer::class,
-            self::MAPPING_ARRAY => true,
-        ],
-        self::IS_INDIRECT_BUSINESS       => self::TYPE_BOOL,
-    ];
+    /**
+     * @Property
+     * @var string
+     */
+    protected $id;
+
+    /**
+     * @Property(type="ArrowSphere\CatalogGraphQLClient\Types\Identifiers")
+     * @var Identifiers
+     */
+    protected $identifiers;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $name;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $classification;
+
+    /**
+     * @Property(isArray=true)
+     * @var string[]
+     */
+    protected $arrowCategories;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $licenseAgreementType;
+
+    /**
+     * @Property(type="ArrowSphere\CatalogGraphQLClient\Types\Family")
+     * @var Family
+     */
+    protected $family;
+
+    /**
+     * @Property(type="bool")
+     * @var bool
+     */
+    protected $isAddon;
+
+    /**
+     * @Property(type="bool")
+     * @var bool
+     */
+    protected $hasAddons;
+
+    /**
+     * @Property(type="ArrowSphere\CatalogGraphQLClient\Types\ActionFlags")
+     * @var ActionFlags
+     */
+    protected $actionFlags;
+
+    /**
+     * @Property(type="ArrowSphere\CatalogGraphQLClient\Types\Identifiers", isArray=true)
+     * @var Identifiers[]
+     */
+    protected $addonPrimaries;
+
+    /**
+     * @Property(type="ArrowSphere\CatalogGraphQLClient\Types\Identifiers", isArray=true)
+     * @var Identifiers[]
+     */
+    protected $conversionOfferPrimaries;
+
+    /**
+     * @Property(type="ArrowSphere\CatalogGraphQLClient\Types\Identifiers", isArray=true)
+     * @var Identifiers[]
+     */
+    protected $baseOfferPrimaries;
+
+    /**
+     * @Property(type="ArrowSphere\CatalogGraphQLClient\Types\Assets")
+     * @var Assets
+     */
+    protected $assets;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $environmentAvailability;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $marketplace;
+
+    /**
+     * @Property(type="bool")
+     * @var bool
+     */
+    protected $isEnabled;
+
+    /**
+     * @Property(type="bool")
+     * @var bool
+     */
+    protected $isTrial;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $lastUpdate;
+
+    /**
+     * @Property(type="ArrowSphere\CatalogGraphQLClient\Types\MarketingText")
+     * @var MarketingText
+     */
+    protected $marketingText;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $vendorOfferUrl;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $serviceDescription;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $eula;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $endCustomerEula;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $endCustomerRequirements;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $endCustomerFeatures;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $xspUrl;
+
+    /**
+     * @Property(type="ArrowSphere\CatalogGraphQLClient\Types\SaleConstraints")
+     * @var SaleConstraints
+     */
+    protected $saleConstraints;
+
+    /**
+     * @Property(type="ArrowSphere\CatalogGraphQLClient\Types\Vendor")
+     * @var Vendor
+     */
+    protected $vendor;
+
+    /**
+     * @Property(type="ArrowSphere\CatalogGraphQLClient\Types\Program")
+     * @var Program
+     */
+    protected $program;
+
+    /**
+     * @Property(type="float")
+     * @var float
+     */
+    protected $weightTopSales;
+
+    /**
+     * @Property(type="float")
+     * @var float
+     */
+    protected $weightForced;
+
+    /**
+     * @Property(type="ArrowSphere\CatalogGraphQLClient\Types\PriceBand", isArray=true)
+     * @var PriceBand[]
+     */
+    protected $priceBand;
+
+    /**
+     * @Property(type="ArrowSphere\CatalogGraphQLClient\Types\PriceBand")
+     * @var PriceBand
+     */
+    protected $defaultPriceBand;
+
+    /**
+     * @Property(type="ArrowSphere\CatalogGraphQLClient\Types\RelatedOffer", isArray=true)
+     * @var RelatedOffer[]
+     */
+    protected $relatedOffers;
+
+    /**
+     * @Property(isArray=true)
+     * @var string[]
+     */
+    protected $arrowSubCategories;
+
+    /**
+     * @Property(type="bool")
+     * @var bool
+     */
+    protected $isIndirectBusiness;
 }

@@ -2,17 +2,21 @@
 
 namespace ArrowSphere\CatalogGraphQLClient\Types;
 
+use ArrowSphere\Entities\Property;
+
 /**
  * Class ErpIdentifier
  *
  * @method string getSku()
- * @method ErpIdentifier setSku(string $sku)
+ * @method self setSku(string $sku)
  */
 class ErpIdentifier extends AbstractType
 {
     public const SKU = 'sku';
 
-    protected const MAPPING = [
-        self::SKU => self::TYPE_STRING,
-    ];
+    /**
+     * @Property
+     * @var string
+     */
+    protected $sku;
 }

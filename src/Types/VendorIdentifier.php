@@ -2,6 +2,8 @@
 
 namespace ArrowSphere\CatalogGraphQLClient\Types;
 
+use ArrowSphere\Entities\Property;
+
 /**
  * Class VendorIdentifier
  *
@@ -10,13 +12,13 @@ namespace ArrowSphere\CatalogGraphQLClient\Types;
  * @method string getOfferName()
  * @method string getSku()
  * @method Attributes getAttributes()
- * @method string getPurchasePlan()
- * @method VendorIdentifier setName(string $name)
- * @method VendorIdentifier setFamily(string $family)
- * @method VendorIdentifier setOfferName(string $offerName)
- * @method VendorIdentifier setSku(string $sku)
- * @method VendorIdentifier setAttributes(Attributes $attributes)
- * @method VendorIdentifier setPurchasePlan(string $purchasePlan)
+ * @method string|null getPurchasePlan()
+ * @method self setName(string $name)
+ * @method self setFamily(string $family)
+ * @method self setOfferName(string $offerName)
+ * @method self setSku(string $sku)
+ * @method self setAttributes(Attributes $attributes)
+ * @method self setPurchasePlan(string|null $purchasePlan)
  */
 class VendorIdentifier extends AbstractType
 {
@@ -32,12 +34,39 @@ class VendorIdentifier extends AbstractType
 
     public const PURCHASE_PLAN = 'purchasePlan';
 
-    protected const MAPPING = [
-        self::NAME          => self::TYPE_STRING,
-        self::FAMILY        => self::TYPE_STRING,
-        self::OFFER_NAME    => self::TYPE_STRING,
-        self::SKU           => self::TYPE_STRING,
-        self::PURCHASE_PLAN => self::TYPE_STRING,
-        self::ATTRIBUTES    => Attributes::class,
-    ];
+    /**
+     * @Property
+     * @var string
+     */
+    protected $name;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $family;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $offerName;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $sku;
+
+    /**
+     * @Property(type="ArrowSphere\CatalogGraphQLClient\Types\Attributes")
+     * @var Attributes
+     */
+    protected $attributes;
+
+    /**
+     * @Property(nullable=true)
+     * @var string|null
+     */
+    protected $purchasePlan;
 }

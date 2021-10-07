@@ -2,13 +2,15 @@
 
 namespace ArrowSphere\CatalogGraphQLClient\Types;
 
+use ArrowSphere\Entities\Property;
+
 /**
  * Class Filters
  *
  * @method string getName()
  * @method FiltersValues[] getValues()
- * @method Filters setName(string $name)
- * @method Filters setValues(FiltersValues[] $values)
+ * @method self setName(string $name)
+ * @method self setValues(FiltersValues[] $values)
  */
 class Filters extends AbstractType
 {
@@ -16,11 +18,15 @@ class Filters extends AbstractType
 
     public const VALUES = 'values';
 
-    protected const MAPPING = [
-        self::NAME  => self::TYPE_STRING,
-        self::VALUES => [
-            self::MAPPING_TYPE  => FiltersValues::class,
-            self::MAPPING_ARRAY => true,
-        ],
-    ];
+    /**
+     * @Property
+     * @var string
+     */
+    protected $name;
+
+    /**
+     * @Property(type="ArrowSphere\CatalogGraphQLClient\Types\FiltersValues", isArray=true)
+     * @var FiltersValues[]
+     */
+    protected $values;
 }

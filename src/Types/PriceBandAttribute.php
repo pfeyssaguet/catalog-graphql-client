@@ -2,6 +2,8 @@
 
 namespace ArrowSphere\CatalogGraphQLClient\Types;
 
+use ArrowSphere\Entities\Property;
+
 /**
  * Class PriceBandAttribute
  *
@@ -16,8 +18,15 @@ class PriceBandAttribute extends AbstractType
 
     public const VALUE = 'value';
 
-    protected const MAPPING = [
-        self::NAME  => self::TYPE_STRING,
-        self::VALUE => self::TYPE_STRING,
-    ];
+    /**
+     * @Property
+     * @var string
+     */
+    protected $name;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $value;
 }

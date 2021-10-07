@@ -2,13 +2,15 @@
 
 namespace ArrowSphere\CatalogGraphQLClient\Types;
 
+use ArrowSphere\Entities\Property;
+
 /**
  * Class Identifiers
  *
  * @method ArrowsphereIdentifier getArrowsphere()
  * @method VendorIdentifier getVendor()
- * @method Identifiers setArrowsphere(ArrowsphereIdentifier $arrowsphere)
- * @method Identifiers setVendor(VendorIdentifier $vendor)
+ * @method self setArrowsphere(ArrowsphereIdentifier $arrowsphere)
+ * @method self setVendor(VendorIdentifier $vendor)
  */
 class Identifiers extends AbstractType
 {
@@ -16,8 +18,15 @@ class Identifiers extends AbstractType
 
     public const VENDOR = 'vendor';
 
-    protected const MAPPING = [
-        self::ARROWSPHERE => ArrowsphereIdentifier::class,
-        self::VENDOR      => VendorIdentifier::class,
-    ];
+    /**
+     * @Property(type="ArrowSphere\CatalogGraphQLClient\Types\ArrowsphereIdentifier")
+     * @var ArrowsphereIdentifier
+     */
+    protected $arrowsphere;
+
+    /**
+     * @Property(type="ArrowSphere\CatalogGraphQLClient\Types\VendorIdentifier")
+     * @var VendorIdentifier
+     */
+    protected $vendor;
 }

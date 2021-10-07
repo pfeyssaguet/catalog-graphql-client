@@ -2,6 +2,8 @@
 
 namespace ArrowSphere\CatalogGraphQLClient\Types;
 
+use ArrowSphere\Entities\Property;
+
 /**
  * Class PriceBandActionFlags
  *
@@ -10,11 +12,11 @@ namespace ArrowSphere\CatalogGraphQLClient\Types;
  * @method bool getCanBeSuspended()
  * @method bool getCanDecreaseSeats()
  * @method bool getCanIncreaseSeats()
- * @method PriceBandActionFlags setCanBeCancelled(bool $canBeCancelled)
- * @method PriceBandActionFlags setCanBeReactivated(bool $canBeReactivated)
- * @method PriceBandActionFlags setCanBeSuspended(bool $canBeSuspended)
- * @method PriceBandActionFlags setCanDecreaseSeats(bool $canDecreaseSeats)
- * @method PriceBandActionFlags setCanIncreaseSeats(bool $canIncreaseSeats)
+ * @method self setCanBeCancelled(bool $canBeCancelled)
+ * @method self setCanBeReactivated(bool $canBeReactivated)
+ * @method self setCanBeSuspended(bool $canBeSuspended)
+ * @method self setCanDecreaseSeats(bool $canDecreaseSeats)
+ * @method self setCanIncreaseSeats(bool $canIncreaseSeats)
  */
 class PriceBandActionFlags extends AbstractType
 {
@@ -28,11 +30,33 @@ class PriceBandActionFlags extends AbstractType
 
     public const CAN_INCREASE_SEATS = 'canIncreaseSeats';
 
-    protected const MAPPING = [
-        self::CAN_BE_CANCELLED   => self::TYPE_BOOL,
-        self::CAN_BE_REACTIVATED => self::TYPE_BOOL,
-        self::CAN_BE_SUSPENDED   => self::TYPE_BOOL,
-        self::CAN_DECREASE_SEATS => self::TYPE_BOOL,
-        self::CAN_INCREASE_SEATS => self::TYPE_BOOL,
-    ];
+    /**
+     * @Property(type="bool")
+     * @var bool
+     */
+    protected $canBeCancelled;
+
+    /**
+     * @Property(type="bool")
+     * @var bool
+     */
+    protected $canBeReactivated;
+
+    /**
+     * @Property(type="bool")
+     * @var bool
+     */
+    protected $canBeSuspended;
+
+    /**
+     * @Property(type="bool")
+     * @var bool
+     */
+    protected $canDecreaseSeats;
+
+    /**
+     * @Property(type="bool")
+     * @var bool
+     */
+    protected $canIncreaseSeats;
 }

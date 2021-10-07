@@ -2,6 +2,8 @@
 
 namespace ArrowSphere\CatalogGraphQLClient\Types;
 
+use ArrowSphere\Entities\Property;
+
 /**
  * Class PriceBandSaleConstraints
  *
@@ -9,10 +11,10 @@ namespace ArrowSphere\CatalogGraphQLClient\Types;
  * @method string getExpiryDate()
  * @method int getMinQuantity()
  * @method int getMaxQuantity()
- * @method PriceBandSaleConstraints setAvailableDate(string $availableDate)
- * @method PriceBandSaleConstraints setExpiryDate(string $expiryDate)
- * @method PriceBandSaleConstraints setMinQuantity(int $minQuantity)
- * @method PriceBandSaleConstraints setMaxQuantity(int $maxQuantity)
+ * @method self setAvailableDate(string $availableDate)
+ * @method self setExpiryDate(string $expiryDate)
+ * @method self setMinQuantity(int $minQuantity)
+ * @method self setMaxQuantity(int $maxQuantity)
  */
 class PriceBandSaleConstraints extends AbstractType
 {
@@ -24,10 +26,27 @@ class PriceBandSaleConstraints extends AbstractType
 
     public const MAX_QUANTITY = 'maxQuantity';
 
-    protected const MAPPING = [
-        self::AVAILABLE_DATE => self::TYPE_STRING,
-        self::EXPIRY_DATE    => self::TYPE_STRING,
-        self::MIN_QUANTITY   => self::TYPE_INT,
-        self::MAX_QUANTITY   => self::TYPE_INT,
-    ];
+    /**
+     * @Property
+     * @var string
+     */
+    protected $availableDate;
+
+    /**
+     * @Property
+     * @var string
+     */
+    protected $expiryDate;
+
+    /**
+     * @Property(type="int")
+     * @var int
+     */
+    protected $minQuantity;
+
+    /**
+     * @Property(type="int", nullable=true)
+     * @var int
+     */
+    protected $maxQuantity;
 }

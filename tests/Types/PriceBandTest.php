@@ -2,7 +2,6 @@
 
 namespace ArrowSphere\CatalogGraphQLClient\Tests\Types;
 
-use ArrowSphere\CatalogGraphQLClient\Exceptions\NonExistingFieldException;
 use ArrowSphere\CatalogGraphQLClient\Types\Billing;
 use ArrowSphere\CatalogGraphQLClient\Types\DynamicAttributes;
 use ArrowSphere\CatalogGraphQLClient\Types\PriceBand;
@@ -12,6 +11,7 @@ use ArrowSphere\CatalogGraphQLClient\Types\PriceBandIdentifiers;
 use ArrowSphere\CatalogGraphQLClient\Types\PriceBandSaleConstraints;
 use ArrowSphere\CatalogGraphQLClient\Types\Prices;
 use ArrowSphere\CatalogGraphQLClient\Types\Uom;
+use ArrowSphere\Entities\Exception\EntitiesException;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -20,7 +20,7 @@ use PHPUnit\Framework\TestCase;
 class PriceBandTest extends TestCase
 {
     /**
-     * @throws NonExistingFieldException
+     * @throws EntitiesException
      */
     public function testFields(): void
     {

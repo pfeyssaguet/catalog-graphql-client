@@ -2,6 +2,8 @@
 
 namespace ArrowSphere\CatalogGraphQLClient\Types;
 
+use ArrowSphere\Entities\Property;
+
 /**
  * Class Pagination
  *
@@ -9,10 +11,10 @@ namespace ArrowSphere\CatalogGraphQLClient\Types;
  * @method int getCurrentPage()
  * @method int getTotalPage()
  * @method int getTotal()
- * @method Pagination setPerPage(int $perPage)
- * @method Pagination setCurrentPage(int $currentPage)
- * @method Pagination setTotalPage(int $totalPage)
- * @method Pagination setTotal(int $total)
+ * @method self setPerPage(int $perPage)
+ * @method self setCurrentPage(int $currentPage)
+ * @method self setTotalPage(int $totalPage)
+ * @method self setTotal(int $total)
  */
 class Pagination extends AbstractType
 {
@@ -24,10 +26,27 @@ class Pagination extends AbstractType
 
     public const TOTAL = 'total';
 
-    protected const MAPPING = [
-        self::PER_PAGE     => self::TYPE_INT,
-        self::CURRENT_PAGE => self::TYPE_INT,
-        self::TOTAL_PAGE   => self::TYPE_INT,
-        self::TOTAL        => self::TYPE_INT,
-    ];
+    /**
+     * @Property(type="int")
+     * @var int
+     */
+    protected $perPage;
+
+    /**
+     * @Property(type="int")
+     * @var int
+     */
+    protected $currentPage;
+
+    /**
+     * @Property(type="int")
+     * @var int
+     */
+    protected $totalPage;
+
+    /**
+     * @Property(type="int")
+     * @var int
+     */
+    protected $total;
 }

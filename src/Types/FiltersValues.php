@@ -2,13 +2,15 @@
 
 namespace ArrowSphere\CatalogGraphQLClient\Types;
 
+use ArrowSphere\Entities\Property;
+
 /**
  * Class FiltersValues
  *
  * @method string getValue()
  * @method int getCount()
- * @method FiltersValues setValue(string $value)
- * @method FiltersValues setCount(int $count)
+ * @method self setValue(string $value)
+ * @method self setCount(int $count)
  */
 class FiltersValues extends AbstractType
 {
@@ -16,8 +18,15 @@ class FiltersValues extends AbstractType
 
     public const COUNT = 'count';
 
-    protected const MAPPING = [
-        self::VALUE => self::TYPE_STRING,
-        self::COUNT => self::TYPE_INT
-    ];
+    /**
+     * @Property
+     * @var string
+     */
+    protected $value;
+
+    /**
+     * @Property(type="int")
+     * @var int
+     */
+    protected $count;
 }

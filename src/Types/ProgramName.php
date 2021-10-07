@@ -2,17 +2,21 @@
 
 namespace ArrowSphere\CatalogGraphQLClient\Types;
 
+use ArrowSphere\Entities\Property;
+
 /**
  * Class ProgramName
  *
  * @method string getFull()
- * @method ProgramName setFull(string $full)
+ * @method self setFull(string $full)
  */
 class ProgramName extends AbstractType
 {
     public const FULL = 'full';
 
-    protected const MAPPING = [
-        self::FULL => self::TYPE_STRING,
-    ];
+    /**
+     * @Property
+     * @var string
+     */
+    protected $full;
 }
